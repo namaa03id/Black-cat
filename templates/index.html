@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omni-Engine - Advanced Web Scraper</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🔍</text></svg>">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">🔍</span>
+                <h1>Omni-Engine</h1>
+                <span class="tagline">Advanced Web Scraper</span>
+            </div>
+            
+            <div class="stats" id="stats">
+                <div class="stat-item">
+                    <span class="stat-value" id="cached-count">-</span>
+                    <span class="stat-label">Cached Results</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="queries-today">-</span>
+                    <span class="stat-label">Queries Today</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="engines-count">-</span>
+                    <span class="stat-label">Search Engines</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Search Section -->
+        <section class="search-section">
+            <div class="search-container">
+                <form class="search-form" id="searchForm">
+                    <div class="search-input-container">
+                        <input 
+                            type="text" 
+                            id="searchInput" 
+                            placeholder="Search the web with advanced scraping..."
+                            autocomplete="off"
+                            required
+                        >
+                        <button type="submit" class="search-btn" id="searchBtn">
+                            <span class="search-icon">🔎</span>
+                            <span class="search-text">Search</span>
+                        </button>
+                    </div>
+                    
+                    <div class="search-options">
+                        <div class="option-group">
+                            <label for="maxResults">Max Results:</label>
+                            <select id="maxResults">
+                                <option value="10">10</option>
+                                <option value="20" selected>20</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
+                        </div>
+                        
+                        <div class="option-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="useCache" checked>
+                                <span class="checkmark"></span>
+                                Use Cache
+                            </label>
+                        </div>
+                        
+                        <div class="option-group">
+                            <button type="button" class="clear-cache-btn" id="clearCacheBtn">
+                                Clear Cache
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Loading Indicator -->
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Scraping the web for results...</p>
+        </div>
+
+        <!-- Results Section -->
+        <section class="results-section" id="resultsSection">
+            <div class="results-header">
+                <h2 id="resultsTitle">Search Results</h2>
+                <div class="results-meta">
+                    <span id="resultsCount"></span>
+                    <div class="export-options">
+                        <button class="export-btn" data-format="json">Export JSON</button>
+                        <button class="export-btn" data-format="csv">Export CSV</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="results-container" id="resultsContainer">
+                <!-- Results will be dynamically inserted here -->
+            </div>
+        </section>
+
+        <!-- Recent Searches -->
+        <aside class="sidebar" id="sidebar">
+            <h3>Recent Searches</h3>
+            <div class="recent-searches" id="recentSearches">
+                <p class="no-recent">No recent searches</p>
+            </div>
+        </aside>
+
+        <!-- Error Modal -->
+        <div class="modal" id="errorModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Error</h3>
+                    <span class="close" id="closeError">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <p id="errorMessage"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Success Modal -->
+        <div class="modal" id="successModal">
+            <div class="modal-content success">
+                <div class="modal-header">
+                    <h3>Success</h3>
+                    <span class="close" id="closeSuccess">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <p id="successMessage"></p>
+                    <a id="downloadLink" style="display: none;" class="download-link">Download File</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
