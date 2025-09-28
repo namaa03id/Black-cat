@@ -1,0 +1,43 @@
+# Omni-Engine Web Scraper Requirements
+# Install with: pip install -r requirements.txt
+
+# Web Framework
+Flask==3.0.0
+Flask-CORS==4.0.0
+
+# HTTP Requests and Async Support
+requests==2.31.0
+aiohttp==3.9.1
+aiofiles==23.2.1
+
+# HTML Parsing
+beautifulsoup4==4.12.2
+lxml==4.9.3
+
+# Fake User Agents
+fake-useragent==1.4.0
+
+# Database
+sqlite3  # Built-in Python module
+
+# Data Processing
+pandas==2.1.4
+numpy==1.26.2
+
+# Utilities
+click==8.1.7
+colorama==0.4.6
+tqdm==4.66.1
+
+# Development and Testing
+pytest==7.4.3
+pytest-asyncio==0.23.2
+
+# Optional: For enhanced features
+# Selenium for JavaScript-heavy sites (uncomment if needed)
+# selenium==4.15.2
+# webdriver-manager==4.0.1
+
+# Optional: For proxy support (uncomment if needed)
+# requests[socks]==2.31.0
+# PySocks==1.7.1
